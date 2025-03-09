@@ -5,14 +5,14 @@ const root = document.getElementById("root");
 const reactRoot = createRoot(root);
 
 reactRoot.render(
-  restaurants.map((restaurant) => {
+  restaurants.map(({name, menu, reviews}) => {
     return (
       <section>
-        <h2>{restaurant.name}</h2>
+        <h2>{name}</h2>
         <h3>Menu</h3>
-        <Menu menu={restaurant.menu}></Menu>
+        <Menu menu={menu}></Menu>
         <h3>Reviews</h3>
-        <Reviews reviews={restaurant.reviews}></Reviews>
+        <Reviews reviews={reviews}></Reviews>
       </section>
     )
   })
