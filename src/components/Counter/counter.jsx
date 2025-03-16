@@ -5,9 +5,9 @@ export const Counter = ({min, max}) => {
     return (
         <div style={{ display: "flex" }}>
             <div>
-                <button onClick={increment}>+</button>
+                <button onClick={increment} type="button">+</button>
                 {count}
-                <button onClick={decrement}>-</button>
+                <button onClick={decrement} type="button">-</button>
             </div>
         </div>
 
