@@ -1,7 +1,4 @@
-import {useCount} from "../Counter/use-count";
-
-export const Counter = ({min, max}) => {
-    const { count, increment, decrement } = useCount({min, max});
+export const Counter = ({ count, increment, decrement }) => {
     return (
         <div style={{ display: "flex" }}>
             <div>
