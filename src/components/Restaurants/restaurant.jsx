@@ -2,12 +2,13 @@ import { Reviews } from "../Reviews/reviews"
 import { Menu } from "../Menu/menu"
 
 export const Restaurant = ({restaurant}) => {
-    const {menu, reviews} = restaurant
+    const {menu, reviews, name} = restaurant
 
     return (
         <>
-            <Menu menu={menu}></Menu>
-            <Reviews reviews={reviews}></Reviews>
+            <h2>{name}</h2>
+            <Menu menu={menu} />
+            <Reviews reviews={reviews} />
         </>
     )
 }
