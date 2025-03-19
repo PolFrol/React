@@ -1,5 +1,4 @@
-import { Counter } from "../Counter/counter"
-import { MAX, MIN } from "../../materials/constants";
+import { Dish } from "../Dish/dish"
 
 export const Menu = ({ menu }) => {
     return (
@@ -9,8 +8,7 @@ export const Menu = ({ menu }) => {
                 {
                     menu.map(({id, name}) =>
                         <li key={id}>
-                            {name}
-                            <Counter min={MIN} max={MAX} />
+                            <Dish name={name} />
                         </li>
                     )
                 }
