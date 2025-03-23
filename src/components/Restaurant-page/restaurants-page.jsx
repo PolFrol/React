@@ -13,6 +13,14 @@ export const RestaurantsPage = ({ restaurants }) => {
                 ))}
             </nav>
             {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+            {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+            {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+            {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+            {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+            {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+            {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+            {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+            {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
         </>
     )
 }
