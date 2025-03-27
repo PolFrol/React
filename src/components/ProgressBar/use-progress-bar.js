@@ -1,13 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 export const useProgressbar = () => {
-    const progressBarRef = useRef(null);
-    const scrollPercentageRef = useRef(0);
+    const [percent, setPersent] = useState(0);
 
     const handleScroll = () => {
-      const percent = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-      scrollPercentageRef.current = percent;
-      progressBarRef.current.style.width = `${percent}%`;
+      const percent = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100; 
+      setPersent(percent)
     }
   
     useEffect(() => {
@@ -17,6 +15,6 @@ export const useProgressbar = () => {
         window.removeEventListener('scroll', handleScroll)
       }
     }, []);
-
-    return progressBarRef;
+    
+    return percent;
 }
