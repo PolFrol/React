@@ -1,11 +1,12 @@
 import { useProgressbar } from './use-progress-bar';
+import styles from './progress-bar.module.css';
 
 export const ProgressBar = () => {
   const percent = useProgressbar();
 
   return (
-    <div style={{ position: "fixed", top: "0", width: "100%", height: "5px", backgroundColor: "red" }}>
-      <div style={{ width: `${percent}%`, height: "5px", backgroundColor: "green"}}/>
+    <div className={styles.bar}>
+      <div className={styles.progress} style={{ width: `${percent}%`}}/>
     </div>
   );
 };
