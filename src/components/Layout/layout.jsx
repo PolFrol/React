@@ -8,7 +8,7 @@ export const Layout = ({ children }) => {
         <>
             <ProgressBar />
             <div className={styles.container}>
-                <Header></Header>
+                <Header />
                 <main>{children}</main>
                 <footer>footer</footer>
             </div>
