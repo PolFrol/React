@@ -1,0 +1,7 @@
+.row {
+    display: flex;
+}
+
+.count {
+    margin: 0 5px;
+}
