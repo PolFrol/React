@@ -1,20 +1,24 @@
 
 import { RestaurantsPage } from "../Restaurant-page/restaurants-page"
-import { restaurants } from "../../materials/mock";
+import { normalizedRestaurants } from "../../materials/normalized-mock";
 import { Layout } from "../Layout/layout";
 import '../App/app.module.css';
 import { ThemeContext } from "../Theme-context/theme-context";
 import { AuthorizationContext } from "../Authorization-context/authorization-context";
+import { Provider } from "react-redux";
+import { store } from "../../redux/store";
 
 
 export const App = () => {
     return (
-        <ThemeContext>
-            <AuthorizationContext>
-                <Layout>
-                    <RestaurantsPage restaurants={restaurants} />
-                </Layout>
-            </AuthorizationContext>
-        </ThemeContext>
+        <Provider store={store}>
+            <ThemeContext>
+                <AuthorizationContext>
+                    <Layout>
+                        <RestaurantsPage restaurants={normalizedRestaurants} />
+                    </Layout>
+                </AuthorizationContext>
+            </ThemeContext>
+        </Provider>
     )
 }
