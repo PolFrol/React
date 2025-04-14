@@ -1,0 +1,26 @@
+.page {
+    padding: 0 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-size: 32px;
+    line-height: 42px;
+    margin-bottom: 24px;
+}
+
+.link {
+    padding: 10px 15px;
+    border-radius: 4px;
+    background-color: #f59d29;
+    color: #FFFFFF;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.text {
+    font-weight: 600;
+    color: #f59d29;
+}
