@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/entities/restaurants/slice"
 
-export const TabsContainer = ({ id , onClick}) => {
-    const tabs = useSelector((state) => selectRestaurantById(state, id));
+export const TabRestaurantContainer = ({ id , onClick}) => {
+    const restaurant = useSelector((state) => selectRestaurantById(state, id));
 
-    if (!tabs) {
+    if (!restaurant) {
         return null;
     }
 
-    const { name } = tabs;
+    const { name } = restaurant;
 
     return (
         <button type="button" key={id} onClick={onClick}>{name}</button>

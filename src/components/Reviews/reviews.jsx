@@ -1,4 +1,4 @@
-import { ReviewsContainer } from './reviews-container';
+import { ReviewContainer } from './review-container';
 
 export const Reviews = ({ reviewsIds }) => {
     return (
@@ -8,7 +8,7 @@ export const Reviews = ({ reviewsIds }) => {
                 {
                     reviewsIds.map((id) =>
                         <li key={id}>
-                            <ReviewsContainer id={id} />
+                            <ReviewContainer id={id} />
                         </li>
                     )
                 }

@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux"
 import { selectCartItems } from "../../redux/entities/cart/slice"
-import { BusketContainer } from './busket-container'
+import { BasketItemContainer } from './basket-item-container'
 
-export const Busket = () => {
+export const Basket = () => {
     const items = useSelector(selectCartItems);
 
     if (!items.length) {
@@ -11,7 +11,7 @@ export const Busket = () => {
 
     return <ul>
         {items.map(({ id, amount}) => (
-            <BusketContainer key={id} id={id} amount={amount} />
+            <BasketItemContainer key={id} id={id} amount={amount} />
             ))}
     </ul>
 }

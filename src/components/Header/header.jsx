@@ -1,5 +1,5 @@
 import { Authorization } from "../Authorization/authorization";
-import { Busket } from "../Busket/busket";
+import { Basket } from "../Basket/basket";
 import { ToggleTheme } from "../Toggle-theme/toggle-theme";
 import styles from './header.module.css';
 
@@ -8,7 +8,7 @@ export const Header = () => {
         <header className={styles.header}>
             <ToggleTheme />
             <Authorization />
-            <Busket />
+            <Basket />
         </header>
     )
 }
