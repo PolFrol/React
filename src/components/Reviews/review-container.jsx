@@ -1,16 +1,16 @@
 import { useSelector } from "react-redux"
-import { selectReviewsById } from '../../redux/entities/reviews/slice'
+import { selectReviewById } from '../../redux/entities/reviews/slice'
 import { UserContainer } from '../User/user-container'
 
 
-export const ReviewsContainer = ({ id }) => {
-    const reviews = useSelector((state) => selectReviewsById(state, id));
+export const ReviewContainer = ({ id }) => {
+    const review = useSelector((state) => selectReviewById(state, id));
 
-    if (!reviews) {
+    if (!review) {
         return null;
     }
 
-    const { text, rating, userId } = reviews
+    const { text, rating, userId } = review
 
     return (
         <>

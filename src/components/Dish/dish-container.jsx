@@ -1,18 +1,18 @@
 import { useSelector } from "react-redux"
 import { Counter } from "../Counter/counter"
 import { useCount } from "../Counter/use-count"
-import { selectDishesById } from '../../redux/entities/dishes/slice'
+import { selectDishById } from '../../redux/entities/dishes/slice'
 
 
-export const DishesContainer = ({ id }) => {
+export const DishContainer = ({ id }) => {
     const { count, increment, decrement } = useCount(id);
-    const dishes = useSelector((state) => selectDishesById(state, id));
+    const dish = useSelector((state) => selectDishById(state, id));
 
-    if (!dishes) {
+    if (!dish) {
         return null;
     }
 
-    const { name, price, ingredients } = dishes
+    const { name, price, ingredients } = dish
 
     return (
         <>

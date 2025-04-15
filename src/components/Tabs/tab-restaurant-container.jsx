@@ -3,17 +3,19 @@ import { selectRestaurantById } from "../../redux/entities/restaurants/slice"
 import { NavLink } from "react-router";
 import styles from './tabs-container.module.css';
 
-export const TabsContainer = ({ id }) => {
-    const tabs = useSelector((state) => selectRestaurantById(state, id));
+export const TabRestaurantContainer = ({ id }) => {
+    const restaurant = useSelector((state) => selectRestaurantById(state, id));
 
-    if (!tabs) {
+    if (!restaurant) {
         return null;
     }
+
+    const { name } = restaurant;
 
     return (
         <NavLink to={id} className={styles.link}>
             <div className={styles.content}>
-                <p>{tabs.name}</p>
+                <p>{name}</p>
             </div>
         </NavLink>
     )

@@ -2,7 +2,7 @@ import { ProgressBar } from "../ProgressBar/progress-bar";
 import styles from './layout.module.css';
 import { Header } from "../Header/header";
 import { Outlet } from "react-router";
-import { Busket } from "../Busket/busket";
+import { Basket } from "../Basket/basket";
 
 
 export const Layout = ({ children }) => {
@@ -13,7 +13,7 @@ export const Layout = ({ children }) => {
                 <Header />
                 <Outlet />
                 <main>{children}</main>
-                <Busket />
+                <Basket />
                 <footer>footer</footer>
             </div>
         </>

@@ -1,5 +1,5 @@
 import { useOutletContext } from 'react-router';
-import { ReviewsContainer } from './reviews-container';
+import { ReviewContainer } from './review-container';
 
 export const Reviews = () => {
     const { reviewsIds } = useOutletContext();
@@ -11,7 +11,7 @@ export const Reviews = () => {
                 {
                     reviewsIds.map((id) =>
                         <li key={id}>
-                            <ReviewsContainer id={id} />
+                            <ReviewContainer id={id} />
                         </li>
                     )
                 }
