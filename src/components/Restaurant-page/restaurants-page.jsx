@@ -1,19 +1,22 @@
 import { useState } from "react";
-import { Restaurant } from "../Restaurants/restaurant"
+import { RestaurantContainer } from "../Restaurants/restaurant-container"
 import styles from './restaurants-page.module.css';
+import { useSelector } from "react-redux";
+import { selectRestaurantIds } from '../../redux/entities/restaurants/slice'
+import { TabRestaurantContainer } from '../Tabs/tab-restaurant-container';
 
-export const RestaurantsPage = ({ restaurants }) => {
-    const [restaurantId, setRestaurantId] = useState(restaurants[0].id);
+export const RestaurantsPage = () => {
+    const restaurantIds = useSelector(selectRestaurantIds)
+    const [activeRestaurantId, setRestaurantId] = useState(restaurantIds[0]);
 
-    const selectedRestaurant = restaurants.find((item) => item.id === restaurantId);
     return (
         <>
             <nav className={styles.nav}>
-                {restaurants.map(({ name, id }) => (
-                    <button type="button" key={id} onClick={() => setRestaurantId(id)}>{name}</button>
+                {restaurantIds.map((id) => (
+                    <TabRestaurantContainer key={id} id={id} onClick={() => setRestaurantId(id)}/>
                 ))}
             </nav>
-            {selectedRestaurant && <Restaurant restaurant={selectedRestaurant} />}
+            {activeRestaurantId && <RestaurantContainer key={activeRestaurantId} id={activeRestaurantId} />}
         </>
     )
 }
