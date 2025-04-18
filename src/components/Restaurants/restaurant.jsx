@@ -1,14 +1,18 @@
-import { Reviews } from "../Reviews/reviews"
-import { Menu } from "../Menu/menu"
+import { NavLink, Outlet } from "react-router"
 import { ReviewForm } from "../Review-form/review-form"
+import styles from './restaurant.module.css';
+import { TabRestaurantInfo } from "../Tab-restaurant-info/tab-restaurant-info";
 
-export const Restaurant = ({ menuIds, reviewsIds, name }) => {
+export const Restaurant = ({ id, name }) => {
     
     return (
         <>
             <h2>{name}</h2>
-            <Menu menuIds={menuIds} />
-            <Reviews reviewsIds={reviewsIds} />
+            <div className={styles.nav}>
+                <TabRestaurantInfo link={'menu'} title={'menu'} />
+                <TabRestaurantInfo link={'reviews'} title={'reviews'} />
+            </div>
+            <Outlet context={{ restaurantId: id }} />
             <ReviewForm />
         </>
     )

@@ -9,9 +9,9 @@ export const RestaurantContainer = ({ id }) => {
         return null;
     }
 
-    const { menu, name, reviews } = restaurant
+    const { name } = restaurant
 
     return (
-        <Restaurant menuIds={menu} name={name} reviewsIds={reviews}/>
+        <Restaurant id={id} name={name} />
     )
 }
