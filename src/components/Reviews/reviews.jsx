@@ -1,6 +1,9 @@
+import { useOutletContext } from 'react-router';
 import { ReviewContainer } from './review-container';
 
-export const Reviews = ({ reviewsIds }) => {
+export const Reviews = () => {
+    const { reviewsIds } = useOutletContext();
+
     return (
         <>
             <h3>Reviews</h3>

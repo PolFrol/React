@@ -1,0 +1,16 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab {
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #000000;
+    border-radius: 4px;
+}
+
+.tab.isActive {
+    background-color: #faf8f4;
+}

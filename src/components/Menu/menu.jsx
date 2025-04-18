@@ -1,6 +1,8 @@
+import { useOutletContext } from "react-router";
 import { Dish } from "../Dish/dish";
 
-export const Menu = ({ menuIds }) => {
+export const Menu = () => {
+    const { menuIds } = useOutletContext();
 
     return (
         <div>
