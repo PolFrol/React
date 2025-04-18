@@ -24,7 +24,7 @@ export const App = () => {
                         <Routes>
                             <Route element={<Layout />}>
                                 <Route index element={<HomePage />} />
-                                <Route path='/restaurants' element={<RestaurantsPage restaurants={normalizedRestaurants} /> }>
+                                <Route path='/restaurants' element={<RestaurantsPage /> }>
                                     <Route path=":restaurantId" element={<RestaurantPage />}>
                                         <Route index element={<Navigate to='menu' />} />
                                         <Route path="menu" element={<Menu />}/>
