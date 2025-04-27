@@ -1,38 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { getRestaurants } from "./get-restaurants";
+import { getRestaurant } from "./get-restaurant";
 
-const initialState = {
-    entities: {},
-    ids: [],
-    requestStatus: "idle"
-}
+export const entityAdapter = createEntityAdapter();
 
-export const restaurant = createSlice({
-    name: 'restaurant',
-    initialState,
-    selectors: {
-        selectRestaurantById: (state, id) => state.entities[id],
-        selectRestaurantIds: (state) => state.ids,
-        selectRequestStatus: (state) => state.requestStatus
-    },
+export const restaurantsSlice = createSlice({
+    name: 'restaurants',
+    initialState: entityAdapter.getInitialState(),
     extraReducers: (builder) => 
         builder
-    .addCase(getRestaurants.pending, (state) => {
-        state.requestStatus = 'pending';
-    })
-    .addCase(getRestaurants.rejected, (state) => {
-        state.requestStatus = 'rejected';
-    })
-    .addCase(getRestaurants.fulfilled, (state, { payload }) => {
-        state.entities = payload.reduce((acc, item) => {
-            acc[item.id] = item;
-    
-            return acc
-        }, {}),
-
-        state.ids = payload.map(({id}) => id),
-        state.requestStatus = 'fulfilled';
-    })
+        .addCase(getRestaurants.fulfilled, (state, { payload }) => {
+            entityAdapter.setAll(state, payload);
+        })
+        .addCase(getRestaurant.fulfilled, (state, { payload }) => {
+            entityAdapter.setAll(state, payload);
+        })
 });
 
-export const { selectRestaurantById, selectRestaurantIds, selectRequestStatus } = restaurant.selectors
+export const { selectRequestStatus } = restaurantsSlice.selectors;
+
+const selectRestaurantsSlice = (state) => state.restaurants;
+
+export const { 
+    selectById: selectRestaurantById, 
+    selectIds: selectRestaurantIds,
+    selectTotal: selectRestaurantsTotal
+} = entityAdapter.getSelectors(selectRestaurantsSlice);
