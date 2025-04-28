@@ -5,16 +5,17 @@ import { selectRestaurantIds } from '../../redux/entities/restaurants/slice';
 import { useRequest } from "../../redux/hooks/use-request";
 import { TabRestaurantContainer } from '../Tabs/tab-restaurant-container';
 import styles from './restaurants-page.module.css';
+import { IDLE, PENDING, REJECTED } from "../../redux/constants";
 
 export const RestaurantsPage = () => {
     const requestStatus = useRequest(getRestaurants)
     const restaurantIds = useSelector(selectRestaurantIds)
 
-    if (requestStatus === 'idle' || requestStatus === 'pending') {
+    if (requestStatus === IDLE || requestStatus === PENDING) {
         return 'loading...'
     }
 
-    if (requestStatus === 'rejected') {
+    if (requestStatus === REJECTED) {
         return 'error'
     }
 
@@ -22,7 +23,7 @@ export const RestaurantsPage = () => {
         <>
             <nav className={styles.nav}>
                 {restaurantIds.map((id) => (
-                    <TabRestaurantContainer key={id} id={id} onClick={() => setRestaurantId(id)}/>
+                    <TabRestaurantContainer key={id} id={id} onClick={() => setRestaurantId(id)} />
                 ))}
             </nav>
             <Outlet />

@@ -1,7 +1,5 @@
-import { useSelector } from "react-redux";
-import styles from './dish.module.css';
 import { DishContainer } from './dish-container';
-import { selectDishIds } from '../../redux/entities/dishes/slice'
+import styles from './dish.module.css';
 
 
 export const Dish = ({ id }) => {

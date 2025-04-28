@@ -13,7 +13,7 @@ export const restaurantsSlice = createSlice({
             entityAdapter.setAll(state, payload);
         })
         .addCase(getRestaurant.fulfilled, (state, { payload }) => {
-            entityAdapter.setAll(state, payload);
+            entityAdapter.setOne(state, payload);
         })
 });
 

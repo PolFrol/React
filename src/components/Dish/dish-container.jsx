@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { Counter } from "../Counter/counter"
 import { useCount } from "../Counter/use-count"
-import { selectDishById } from '../../redux/entities/dishes/slice'
+import { selectDishById } from "../../redux/entities/dishes/slice";
 
 
 export const DishContainer = ({ id }) => {

@@ -1,6 +1,5 @@
 
 import { RestaurantsPage } from "../Restaurant-page/restaurants-page"
-import { normalizedRestaurants } from "../../materials/normalized-mock";
 import { Layout } from "../Layout/layout";
 import '../App/app.module.css';
 import { ThemeContext } from "../Theme-context/theme-context";
