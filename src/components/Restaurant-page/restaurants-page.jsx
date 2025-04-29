@@ -23,7 +23,7 @@ export const RestaurantsPage = () => {
         <>
             <nav className={styles.nav}>
                 {restaurantIds.map((id) => (
-                    <TabRestaurantContainer key={id} id={id} onClick={() => setRestaurantId(id)} />
+                    <TabRestaurantContainer key={id} id={id} />
                 ))}
             </nav>
             <Outlet />

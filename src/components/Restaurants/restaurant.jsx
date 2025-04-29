@@ -1,19 +1,18 @@
 import { NavLink, Outlet } from "react-router"
 import { ReviewForm } from "../Review-form/review-form"
 import styles from './restaurant.module.css';
-import classNames from "classnames";
+import { TabRestaurantInfo } from "../Tab-restaurant-info/tab-restaurant-info";
 
-export const Restaurant = ({ menuIds, reviewsIds, name }) => {
-    const context = { menuIds, reviewsIds };
-
+export const Restaurant = ({ id, name }) => {
+    
     return (
         <>
             <h2>{name}</h2>
             <div className={styles.nav}>
-                <NavLink to={'menu'} className={({ isActive }) => classNames(styles.tab, isActive && styles.isActive)}>menu</NavLink>
-                <NavLink to={'reviews'} className={({ isActive }) => classNames(styles.tab, isActive && styles.isActive)}>reviews</NavLink>
+                <TabRestaurantInfo link={'menu'} title={'menu'} />
+                <TabRestaurantInfo link={'reviews'} title={'reviews'} />
             </div>
-            <Outlet context={context} />
+            <Outlet context={{ restaurantId: id }} />
             <ReviewForm />
         </>
     )
