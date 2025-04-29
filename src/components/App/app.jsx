@@ -1,4 +1,3 @@
-
 import { Provider } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { DishPage } from "../../pages/dish-page/dish-page";
