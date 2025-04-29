@@ -1,0 +1,13 @@
+.content {
+    padding: 16px;
+    font-size: 28px;
+    line-height: 32px;
+    width: 500px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    color: #f59d29;
+}
