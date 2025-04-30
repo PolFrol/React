@@ -1,29 +1,27 @@
-import { useSelector } from "react-redux";
-import { Outlet } from "react-router";
-import { getRestaurants } from "../../redux/entities/restaurants/get-restaurants";
-import { selectRestaurantIds } from '../../redux/entities/restaurants/slice';
-import { useRequest } from "../../redux/hooks/use-request";
-import { TabRestaurantContainer } from '../Tabs/tab-restaurant-container';
+import { NavLink, Outlet } from "react-router";
+import { useGetRestaurantsQuery } from "../../redux/services/api";
 import styles from './restaurants-page.module.css';
-import { IDLE, PENDING, REJECTED } from "../../redux/constants";
 
 export const RestaurantsPage = () => {
-    const requestStatus = useRequest(getRestaurants)
-    const restaurantIds = useSelector(selectRestaurantIds)
+    const { data, isLoading, isError } = useGetRestaurantsQuery();
 
-    if (requestStatus === IDLE || requestStatus === PENDING) {
+    if (isLoading) {
         return 'loading...'
     }
 
-    if (requestStatus === REJECTED) {
+    if (isError) {
         return 'error'
     }
 
     return (
         <>
             <nav className={styles.nav}>
-                {restaurantIds.map((id) => (
-                    <TabRestaurantContainer key={id} id={id} />
+                {data.map(( {id, name}) => (
+                    <NavLink key={id} to={`./${id}`} className={styles.link}>
+                        <div className={styles.content}>
+                            <p>{name}</p>
+                        </div>
+                    </NavLink>
                 ))}
             </nav>
             <Outlet />

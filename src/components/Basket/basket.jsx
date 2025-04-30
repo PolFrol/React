@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux"
-import { selectCartItems } from "../../redux/entities/cart/slice"
-import { BasketItemContainer } from './basket-item-container'
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../redux/entities/cart/slice";
+import { BasketItemContainer } from './basket-item-container';
 
 export const Basket = () => {
     const items = useSelector(selectCartItems);
@@ -9,9 +9,13 @@ export const Basket = () => {
         return null;
     }
 
-    return <ul>
-        {items.map(({ id, amount}) => (
-            <BasketItemContainer key={id} id={id} amount={amount} />
+    return (
+        <ul>
+            {items.map((item) => (
+                <li key={item.id}>
+                    <BasketItemContainer id={item.id} />
+                </li>
             ))}
-    </ul>
+        </ul>
+    )
 }
