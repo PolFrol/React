@@ -1,21 +1,16 @@
-import { ReviewContainer } from './review-container';
-import { selectReviewIds } from '../../redux/entities/reviews/slice';
-import { getReviews } from '../../redux/entities/reviews/get-rewiews';
-import { useSelector } from 'react-redux';
-import { useRequest } from "../../redux/hooks/use-request";
 import { useParams } from 'react-router';
-import { IDLE, PENDING, REJECTED } from "../../redux/constants";
+import { useGetReviewsQuery } from '../../redux/services/api';
+import { ReviewItem } from './review-item';
 
 export const Reviews = () => {
     const { restaurantId } = useParams();
-    const reviewsIds = useSelector(selectReviewIds);
-    const requestStatus = useRequest(getReviews, restaurantId);
+    const { data, isLoading, isError } = useGetReviewsQuery(restaurantId)
 
-    if (requestStatus === IDLE || requestStatus === PENDING) {
+    if (isLoading) {
         return 'loading...'
     }
 
-    if (requestStatus === REJECTED) {
+    if (isError) {
         return 'error'
     }
 
@@ -24,9 +19,9 @@ export const Reviews = () => {
             <h3>Reviews</h3>
             <ul>
                 {
-                    reviewsIds.map((id) =>
+                    data.map(({id, text, rating, userId }) =>
                         <li key={id}>
-                            <ReviewContainer id={id} />
+                            <ReviewItem id={id} text={text} rating={rating} userId={userId} />
                         </li>
                     )
                 }

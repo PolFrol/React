@@ -1,17 +1,22 @@
-import { useSelector } from "react-redux"
-import { selectRestaurantById } from "../../redux/entities/restaurants/slice"
-import { Restaurant } from './restaurant'
+import { useAddReviewMutation, useGetRestaurantsQuery } from "../../redux/services/api";
+import { Restaurant } from './restaurant';
 
 export const RestaurantContainer = ({ id }) => {
-    const restaurant = useSelector((state) => selectRestaurantById(state, id));
+    const { data } = useGetRestaurantsQuery(undefined, {
+        selectFromResult: (result) => ({
+            ...result,
+            data: result.data?.find(({id: restaurantId}) => restaurantId === id)
+        })
+    });
 
-    if (!restaurant) {
-        return null;
+    const { name } = data || {};
+
+    const [addReview, { isLoading: isAddReviewLoading }] = useAddReviewMutation()
+
+    const handleSubmit = (review) => {
+        addReview({ restaurantId: id, review })
     }
-
-    const { name } = restaurant
-
     return (
-        <Restaurant id={id} name={name} />
+        <Restaurant id={id} name={name} onSubmit={handleSubmit} isSubmitButtonDisabled={isAddReviewLoading} />
     )
 }
